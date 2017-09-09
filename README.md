@@ -213,8 +213,6 @@ listen | 对全景对象监听事件
 
 觉得本插件有用的记得点赞给星！谢谢大家支持！
 
-完整源码及DEMO地址：
-https://github.com/ConardLi/tpanorama
 
 
 
