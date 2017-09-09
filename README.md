@@ -68,7 +68,7 @@ tp.config(opt);
 tp.init();
 ```
 
-![这里写图片描述](http://img.blog.csdn.net/20170909121216693?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQxNDk4MDU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://chuantu.biz/t6/42/1504930774x1929267553.png)
 
 # 2.添加全景标记工具
 
@@ -158,7 +158,7 @@ listen | 对全景对象监听事件
 ```
 
 
-![这里写图片描述](http://img.blog.csdn.net/20170909121203256?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQxNDk4MDU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://chuantu.biz/t6/42/1504930807x2890149554.png)
 
 ### 2.3.2 自定义事件
 
