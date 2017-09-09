@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全景标记设置(自定义参数)</title>
+    <script src="js/three.js"></script>
+    <script src="js/tpanorama.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+    </style>
+
+    <script>
+        var opt,s;
+        window.onload = function () {
+            opt = {
+                container: 'set',//setting容器
+                imgUrl: 'img/p3.png',
+                width: '1000px',//指定宽度，高度自适应
+                showGrid: true,//是否显示格网
+                showPosition: true,//是否显示经纬度提示
+                lableColor: '#9400D3',//标记颜色
+                gridColor: '#48D1CC',//格网颜色
+                lables: [
+                    {lon:-72.00,lat:9.00,text:'蓝窗户'},{lon:114.12,lat:69.48,text:'一片云彩'},{lon:132.48,lat:-12.24,text:'大海'}
+                ],//标记   {lon:114,lat:38,text:'标记一'}
+                addLable: false,//开启后双击添加标记  (必须开启经纬度提示)
+                getLable: false,//开启后右键查询标记  (必须开启经纬度提示)
+                deleteLbale:false//开启后中键删除(必须开启经纬度提示)
+            };
+            s = new tpanoramaSetting(opt);
+            s.init();
+            s.listen('dblclick',function (e) {
+                var text = prompt("标记名称");
+                if (text!=null && text!= undefined && text!="") {
+                    s.addLable(e,text);
+                    alert("添加标记："+text+" 后台交互");
+                }
+            });
+            s.listen('mousedown',function (e) {
+                if (e.button == 2) {
+                    var p = s.getLable(e);
+                    if (p.lon!=null &&p.lon!=undefined&&p.lon!="" ) {
+                        alert("经度：" + p.lon + ",纬度：" + p.lat + ",名称：" + p.text +"   其他操作");
+                    }
+                }
+            });
+            s.listen('mousedown',function (e) {
+                if (e.button == 1) {
+                    var p = s.getLable(e);
+                    if (p.lon!=null &&p.lon!=undefined&&p.lon!="" ) {
+                        var c = confirm("您确认要删除该标记吗？");
+                        if (c) {
+                            s.delete(p);
+                            s.clean();
+                            s.init();
+                            alert("删除成功！   后台交互")
+                        }
+                    }
+                }
+            });
+        };
+
+
+    </script>
+</head>
+<body>
+
+<div id="set"></div>
+
+
+</body>
+</html>
