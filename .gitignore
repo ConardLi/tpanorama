@@ -1,0 +1,96 @@
+# kdiff3 ignore
+*.orig
+
+# maven ignore
+target/
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# package ignore (optional)
+# *.jar
+# *.war
+# *.zip
+# *.tar
+# *.tar.gz
+
+# nodejs ignore
+node_modules/
+
+# RNX JSBUNDLE ignore
+bundle/
+
+# eslint-cache
+.eslintcache
+.vscode
+
+# 发布系统 node 版本太低
+package-lock.json
+# kdiff3 ignore
+*.orig
+
+# maven ignore
+target/
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# package ignore (optional)
+# *.jar
+# *.war
+# *.zip
+# *.tar
+# *.tar.gz
+
+# nodejs ignore
+node_modules/
+
+# RNX JSBUNDLE ignore
+bundle/
+
+# eslint-cache
+.eslintcache
+.vscode
+
+# 发布系统 node 版本太低
+package-lock.json
+# 暂时不锁定版本
+yarn.lock

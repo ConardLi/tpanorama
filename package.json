@@ -1,0 +1,28 @@
+{
+  "name": "tpanorama",
+  "version": "1.0.2",
+  "description": "全景标记，全景生成插件",
+  "scripts": {
+    "start": "node ./server/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConardLi/tpanorama.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConardLi/tpanorama/issues"
+  },
+  "homepage": "https://github.com/ConardLi/tpanorama#readme",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "handlebars": "^4.0.12",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0"
+  }
+}
