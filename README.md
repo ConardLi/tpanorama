@@ -16,6 +16,7 @@ npm start
 ## 直接使用js
 
 1.引用 three.js
+
 2.引用 tpanorama.js
 
 # 1.全景展示
