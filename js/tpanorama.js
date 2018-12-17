@@ -30,16 +30,15 @@
 
 
     function tpanorama(opt) {
-        this.config(opt);
+        this.render(opt);
     }
 
     tpanorama.prototype = {
         constructor: this,
         def: {},
-        config: function (opt) {
+        render: function (opt) {
             this.def = extend(options, opt, true);
-        },
-        init: function () {
+            document.getElementById(this.def.container).innerHTML = '';
             _lables = [];
             initContainer(this.def.container);
             initCamera();
@@ -47,27 +46,18 @@
             makePanorama(this.def.pRadius, this.def.widthSegments, this.def.heightSegments, this.def.url);
             initRenderer();
             initLable(this.def.lables, this.def.showlable);
-            var that = this;
-            if (_count1 == 1) {
-                _container.addEventListener('mousedown', onDocumentMouseDown, false);
-                _container.addEventListener('mousemove', onDocumentMouseMove, false);
-                _container.addEventListener('mouseup', onDocumentMouseUp, false);
-                _container.addEventListener('mousewheel', function (e) {
-                    var then = that;
-                    onDocumentMouseWheel(e, then.def.minFocalLength, then.def.maxFocalLength);
-                }, false);
-                _container.addEventListener('DOMMouseScroll', function (e) {
-                    onDocumentMouseWheel(e, then.def.minFocalLength, then.def.maxFocalLength);
-                }, false);
-                _container.addEventListener('click', onDocumentMouseClick, false);
-                global.addEventListener('resize', onWindowResize, false);
-
-                animate();
-            }
-            _count1++;
-        },
-        clean: function () {
-            document.getElementById(this.def.container).innerHTML = '';
+            _container.addEventListener('mousedown', onDocumentMouseDown, false);
+            _container.addEventListener('mousemove', onDocumentMouseMove, false);
+            _container.addEventListener('mouseup', onDocumentMouseUp, false);
+            _container.addEventListener('mousewheel', (e) => {
+                onDocumentMouseWheel(e, this.def.minFocalLength, this.def.maxFocalLength);
+            }, false);
+            _container.addEventListener('DOMMouseScroll', (e) => {
+                onDocumentMouseWheel(e, this.def.minFocalLength, this.def.maxFocalLength);
+            }, false);
+            _container.addEventListener('click', onDocumentMouseClick, false);
+            global.addEventListener('resize', onWindowResize, false);
+            animate();
         }
     }
 

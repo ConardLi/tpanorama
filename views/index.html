@@ -48,7 +48,6 @@
                 showlable: 'show' // show,click
             }
             tp = new tpanorama(opt);
-            tp.init();
         }
 
         function changeImg(name) {
@@ -63,9 +62,7 @@
                 opt.lables = [{ position: { lon: 48.96, lat: -20.16 }, text: '樱花' }]
             }
             opt.url = 'img/' + name + '.png';
-            tp.clean();
-            tp.config(opt);
-            tp.init();
+            tp.render(opt);
         }
 
     </script>
