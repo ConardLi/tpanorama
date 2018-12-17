@@ -13,7 +13,7 @@ npm start
 
 # 使用
 
-## 直接使用js
+## 直接引用js
 
 1.引用 three.js
 
