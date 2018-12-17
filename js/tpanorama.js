@@ -48,21 +48,21 @@
             initRenderer();
             initLable(this.def.lables, this.def.showlable);
             var that = this;
-            if(_count1 == 1){
-            _container.addEventListener('mousedown', onDocumentMouseDown, false);
-            _container.addEventListener('mousemove', onDocumentMouseMove, false);
-            _container.addEventListener('mouseup', onDocumentMouseUp, false);
-            _container.addEventListener('mousewheel', function (e) {
-                var then = that;
-                onDocumentMouseWheel(e, then.def.minFocalLength, then.def.maxFocalLength);
-            }, false);
-            _container.addEventListener('DOMMouseScroll', function (e) {
-                onDocumentMouseWheel(e, then.def.minFocalLength, then.def.maxFocalLength);
-            }, false);
-            _container.addEventListener('click', onDocumentMouseClick, false);
-            global.addEventListener('resize', onWindowResize, false);
+            if (_count1 == 1) {
+                _container.addEventListener('mousedown', onDocumentMouseDown, false);
+                _container.addEventListener('mousemove', onDocumentMouseMove, false);
+                _container.addEventListener('mouseup', onDocumentMouseUp, false);
+                _container.addEventListener('mousewheel', function (e) {
+                    var then = that;
+                    onDocumentMouseWheel(e, then.def.minFocalLength, then.def.maxFocalLength);
+                }, false);
+                _container.addEventListener('DOMMouseScroll', function (e) {
+                    onDocumentMouseWheel(e, then.def.minFocalLength, then.def.maxFocalLength);
+                }, false);
+                _container.addEventListener('click', onDocumentMouseClick, false);
+                global.addEventListener('resize', onWindowResize, false);
 
-            animate();
+                animate();
             }
             _count1++;
         },
@@ -106,7 +106,7 @@
     function makePanorama(pRadius, widthSegments, heightSegments, u) {
         var mesh = new THREE.Mesh(new THREE.SphereGeometry(pRadius, widthSegments, heightSegments),
             new THREE.MeshBasicMaterial(
-                {map: THREE.ImageUtils.loadTexture(u)}
+                { map: THREE.ImageUtils.loadTexture(u) }
             ));
         mesh.scale.x = -1;
         _scene.add(mesh);
@@ -130,8 +130,8 @@
 
     function onDocumentMouseMove(event) {
         if (_isUserInteracting) {
-            _lon = ( _onPointerDownPointerX - event.clientX ) * 0.1 + _onPointerDownLon;
-            _lat = ( event.clientY - _onPointerDownPointerY ) * 0.1 + _onPointerDownLat;
+            _lon = (_onPointerDownPointerX - event.clientX) * 0.1 + _onPointerDownLon;
+            _lat = (event.clientY - _onPointerDownPointerY) * 0.1 + _onPointerDownLat;
         }
     }
 
@@ -140,8 +140,8 @@
     }
 
     function onDocumentMouseClick(event) {
-        _mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-        _mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+        _mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        _mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         _raycaster.setFromCamera(_mouse, _cameraOrtho);
         var intersects = _raycaster.intersectObjects(_clickableObjects);
         intersects.forEach(function (element) {
@@ -186,7 +186,7 @@
     function initLable(lables, showlable) {
         if (showlable == 'show') {
             for (var i = 0; i < lables.length; i++) {
-                _lables.push(createLableSprite(_sceneOrtho,lables[i].text,lables[i].position));
+                _lables.push(createLableSprite(_sceneOrtho, lables[i].text, lables[i].position));
             }
         } else if (showlable == 'click') {
             for (var i = 0; i < lables.length; i++) {
@@ -209,7 +209,7 @@
         context1.fillText(name, 4, 20);
         var texture1 = new THREE.Texture(canvas1);
         texture1.needsUpdate = true;
-        var spriteMaterial = new THREE.SpriteMaterial({map: texture1});
+        var spriteMaterial = new THREE.SpriteMaterial({ map: texture1 });
         var sprite1 = new THREE.Sprite(spriteMaterial);
         sprite1.scale.set(1.0, 1.0, 1.0);
         sprite1.position.set(0, 0, 0);
@@ -287,7 +287,7 @@
                 }
             }
         }
-        if (typeof(_lables) != "undefined") {
+        if (typeof (_lables) != "undefined") {
             for (var i = 0; i < _lables.length; i++) {
                 var wp = geoPosition2World(_lables[i].pos.lon, _lables[i].pos.lat);
                 var sp = worldPostion2Screen(wp, _camera);
@@ -325,8 +325,8 @@
         var vector = world_vector.clone();
         vector.project(camera);
         var result = {
-            x: Math.round((vector.x + 1 ) * window.innerWidth / 2 - window.innerWidth / 2),
-            y: Math.round(window.innerHeight / 2 - (-vector.y + 1 ) * window.innerHeight / 2),
+            x: Math.round((vector.x + 1) * window.innerWidth / 2 - window.innerWidth / 2),
+            y: Math.round(window.innerHeight / 2 - (-vector.y + 1) * window.innerHeight / 2),
             z: 0
         };
         return new THREE.Vector3(result.x, result.y, result.z);
@@ -364,7 +364,7 @@
         lables: [],//标记   {lon:114,lat:38,text:'标记一'}
         addLable: true,//开启后双击添加标记  (必须开启经纬度提示)
         getLable: true,//开启后右键查询标记  (必须开启经纬度提示)
-        deleteLbale:true,//开启默认中键删除 （必须开启经纬度提示）
+        deleteLbale: true,//开启默认中键删除 （必须开启经纬度提示）
     }
 
 
@@ -439,7 +439,7 @@
             return _lable;
         },
         addLable: function (e, text) {
-            var position = addMark(e, this.def.lableColor,text);
+            var position = addMark(e, this.def.lableColor, text);
         },
         getLable: function (e) {
             return selectLable1(e);
@@ -449,12 +449,12 @@
                 fun(e);
             })
         },
-        delete:function (p) {
+        delete: function (p) {
             if (!isEmpty(p.lon)) {
                 removeByValue(_lable, p);
             }
         },
-        clean:function () {
+        clean: function () {
             document.getElementById(this.def.container).innerHTML = '';
         }
     }
@@ -483,7 +483,7 @@
         _info = document.getElementById(_infoId);
         if (_info != null) {
             document.body.removeChild(_info);
-        }else {
+        } else {
             _info = document.createElement('div');
         }
         _info.id = _infoId;
@@ -588,7 +588,7 @@
     function getXY(eve) {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-        return {x: scrollLeft + eve.clientX, y: scrollTop + eve.clientY};
+        return { x: scrollLeft + eve.clientX, y: scrollTop + eve.clientY };
     }
 
     function updateInfoDiv(e) {
@@ -622,7 +622,7 @@
         }
         lon = lon.toFixed(2);
         lat = lat.toFixed(2);
-        return {lon: lon, lat: lat};
+        return { lon: lon, lat: lat };
     }
 
 
@@ -679,11 +679,11 @@
         } else {
             y = -1 * lat / 90 * 0.5 * h + 0.5 * h
         }
-        return {x: x, y: y}
+        return { x: x, y: y }
     }
 
 
-    function addMark(e,color , text) {
+    function addMark(e, color, text) {
         var pos = getXY(e);
         var iX = _setContainer.offsetLeft;
         var iY = _setContainer.offsetTop;
@@ -692,7 +692,7 @@
         drawCircle(x, y);
         drawText(x, y, text, color);
         var ll = calLonLat(e);
-        var l = {lon: ll.lon, lat: ll.lat, text: text}
+        var l = { lon: ll.lon, lat: ll.lat, text: text }
         _lable.push(l);
         return l;
     }
@@ -726,8 +726,8 @@
 
 
     function removeByValue(arr, val) {
-        for(var i=0; i<arr.length; i++) {
-            if(arr[i].lon == val.lon && arr[i].lat == val.lat) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].lon == val.lon && arr[i].lat == val.lat) {
                 arr.splice(i, 1);
                 break;
             }
