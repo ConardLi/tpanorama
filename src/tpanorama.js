@@ -1,3 +1,17 @@
+/** 
+ * todo 完全脱离 引用方式
+ * todo import example
+ * todo npm
+ * todo npm example
+ * todo react
+ */
+
+import {
+    Vector2, PerspectiveCamera, Vector3, OrthographicCamera,
+    Scene, SphereGeometry, Mesh, MeshBasicMaterial, Raycaster,
+    ImageUtils,
+} from 'three';
+
 (function (global, undefined) {
 
     var _camera, _scene, _renderer;
@@ -10,7 +24,7 @@
     var _lon = 0, _lat = 0;
     var _onPointerDownLon = 0, _onPointerDownLat = 0;
     var _onPointerDownPointerX = 0, _onPointerDownPointerY = 0;
-    var _mouse = new THREE.Vector2();
+    var _mouse = new Vector2();
     var _clickableObjects = [];
     var _sprites = [];
     var _lables = [];
@@ -81,22 +95,22 @@
     }
 
     function initCamera() {
-        _camera = new THREE.PerspectiveCamera(_fov, window.innerWidth / window.innerHeight, 1, 1100);
-        _camera.target = new THREE.Vector3(0, 0, 0);
-        _cameraOrtho = new THREE.OrthographicCamera(-window.innerWidth / 2, window.innerWidth / 2, window.innerHeight / 2, -window.innerHeight / 2, 1, 10);
+        _camera = new PerspectiveCamera(_fov, window.innerWidth / window.innerHeight, 1, 1100);
+        _camera.target = new Vector3(0, 0, 0);
+        _cameraOrtho = new OrthographicCamera(-window.innerWidth / 2, window.innerWidth / 2, window.innerHeight / 2, -window.innerHeight / 2, 1, 10);
         _cameraOrtho.position.z = 10;
-        _scene = new THREE.Scene();
-        _sceneOrtho = new THREE.Scene();
+        _scene = new Scene();
+        _sceneOrtho = new Scene();
     }
 
     function initRaycaster() {
-        _raycaster = new THREE.Raycaster();
+        _raycaster = new Raycaster();
     }
 
     function makePanorama(pRadius, widthSegments, heightSegments, u) {
-        var mesh = new THREE.Mesh(new THREE.SphereGeometry(pRadius, widthSegments, heightSegments),
-            new THREE.MeshBasicMaterial(
-                { map: THREE.ImageUtils.loadTexture(u) }
+        var mesh = new Mesh(new SphereGeometry(pRadius, widthSegments, heightSegments),
+            new MeshBasicMaterial(
+                { map: ImageUtils.loadTexture(u) }
             ));
         mesh.scale.x = -1;
         _scene.add(mesh);
