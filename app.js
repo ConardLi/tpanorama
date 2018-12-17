@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('examples', path.join(__dirname, 'examples'));
 app.engine('html', cons.handlebars);
 app.set('view engine', 'html');
 
@@ -18,9 +18,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/js', express.static(path.join(__dirname, '/js')));
+app.use('/src', express.static(path.join(__dirname, '/src')));
 app.use('/img', express.static(path.join(__dirname, '/img')));
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'examples')));
 
 app.use('/', indexRouter);
 
