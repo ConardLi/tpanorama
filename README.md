@@ -48,7 +48,7 @@ clean | 清除全景对象
 
 初始化：（参数不设置则采用默认参数）
 
-```
+```js
         var opt,tp;
         window.onload = function () {
             opt = {
@@ -126,7 +126,7 @@ listen | 对全景对象监听事件
 
 初始化（参数不设置则采用默认参数）
 
-```
+```js
         var opt,s;
         window.onload = function () {
              opt = {
@@ -151,7 +151,7 @@ listen | 对全景对象监听事件
 
 参数切换
 
-```
+```js
         function changeImg(name) {
             if (name == "p1"){
                 opt.lables = [{lon:178.56,lat:-15.84,text:'神像'}]
@@ -181,7 +181,7 @@ listen | 对全景对象监听事件
 添加标记：
 
 
-```
+```js
             s.listen('dblclick',function (e) {
                 var text = prompt("标记名称");
                 if (text!=null && text!= undefined && text!="") {
@@ -193,7 +193,7 @@ listen | 对全景对象监听事件
 
 查询标记:
 
-```
+```js
             s.listen('mousedown',function (e) {
                 if (e.button == 2) {
                     var p = s.getLable(e);
@@ -206,7 +206,7 @@ listen | 对全景对象监听事件
 
 删除标记:
 
-```
+```js
             s.listen('mousedown',function (e) {
                 if (e.button == 1) {
                     var p = s.getLable(e);
@@ -227,4 +227,20 @@ listen | 对全景对象监听事件
 
 
 
+# 关于
+
+您还可以在下面的地方关注我，共同学习进步。
+
+
+<a href="https://juejin.im/user/5bea27965188250edf4ad8b7" >
+  <img src="./dist/img/juejin.png"  width="220px" height="110px" /> 
+</a>
+
+<a href="https://segmentfault.com/u/conardli" class="item" >
+  <img src="./dist/img/segmentfault.jpg" width="150px" height="150px" />
+</a>
+
+<a href="https://mp.weixin.qq.com/s/dYZEHTgqvxGV7mL99JuxRQ" class="item" >
+  <img src="./dist/img/gongzhonghao.png" width="150"  height="150" />
+</a>
 
