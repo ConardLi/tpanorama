@@ -22,9 +22,7 @@ npm run example
 
 2.引用 [tpanorama.js](/origin/tpanorama.js)
 
-参考`/examples/page1.html`
-
-参考[/examples/index.js](/examples/page1.html)
+参考[/examples/page1.html](/examples/page1.html)
 
 ## 2.npm
 
