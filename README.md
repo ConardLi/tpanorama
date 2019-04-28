@@ -9,7 +9,7 @@
 
 ```
 npm install
-npm start
+npm run example
 ```
 
 浏览器访问：http://localhost:3000/
@@ -21,6 +21,8 @@ npm start
 1.引用 three.js
 
 2.引用 tpanorama.js
+
+参考`page1.html`
 
 # 1.全景展示
 

@@ -3,9 +3,9 @@
   "version": "1.0.2",
   "description": "全景标记，全景生成插件",
   "scripts": {
-    "babel": "babel ./src/tpanorama.js --out-file ./lib/tpanorama.js",
+    "build": "babel src --out-dir lib",
     "webpack": "webpack  --config webpack.config.js",
-    "start": "npm run webpack && node ./server/www"
+    "example": "npm run webpack && node ./server/www"
   },
   "repository": {
     "type": "git",

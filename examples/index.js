@@ -1,4 +1,4 @@
-var { tpanorama } = require('../src/index.js');
+var { tpanorama } = require('../lib/index.js');
 var opt, tp;
 window.onload = function () {
   opt = {
