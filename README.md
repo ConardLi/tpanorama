@@ -16,13 +16,23 @@ npm run example
 
 # 使用
 
-## 直接引用js
+## 1.直接引用js
 
-1.引用 three.js
+1.引用 [three.js](/origin/three.js)
 
-2.引用 tpanorama.js
+2.引用 [tpanorama.js](/origin/tpanorama.js)
 
-参考`page1.html`
+参考`/examples/page1.html`
+
+参考[/examples/index.js](/examples/page1.html)
+
+## 2.npm
+
+```
+npm install tpanorama
+```
+
+参考[/examples/index.js](/examples/index.js)
 
 # 1.全景展示
 
