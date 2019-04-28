@@ -30,6 +30,10 @@ npm run example
 npm install tpanorama
 ```
 
+```js
+var { tpanorama,tpanoramaSetting} = require('tpanorama');
+```
+
 参考[/examples/index.js](/examples/index.js)
 
 # 1.全景展示
