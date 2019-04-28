@@ -83,6 +83,8 @@ Thumbs.db
 # nodejs ignore
 node_modules/
 
+build/
+
 # RNX JSBUNDLE ignore
 bundle/
 
@@ -94,3 +96,4 @@ bundle/
 package-lock.json
 # 暂时不锁定版本
 yarn.lock
+
