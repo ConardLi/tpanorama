@@ -55,7 +55,7 @@ panoramaSetting.prototype = {
         if (that.def.addLable) {
           _info.addEventListener("dblclick", function (e) {
             var text = prompt("标记名称");
-            if (!isEmpty(text)) {
+            if (text) {
               addMark(e, then.def.lableColor, text);
             }
           });
@@ -67,7 +67,7 @@ panoramaSetting.prototype = {
           _info.addEventListener("mousedown", function (e) {
             if (e.button == 2) {
               var p = selectLable1(e);
-              if (!isEmpty(p.lon)) {
+              if (p.lon) {
                 alert("经度" + p.lon + ",纬度" + p.lat + ",名称" + p.text);
               }
             }
@@ -77,7 +77,7 @@ panoramaSetting.prototype = {
           _info.addEventListener("mousedown", function (e) {
             if (e.button == 1) {
               var p = selectLable1(e);
-              if (!isEmpty(p.lon)) {
+              if (p.lon) {
                 var c = confirm("您确认要删除该标记吗？");
                 if (c) {
                   removeByValue(_lable, p);
@@ -107,7 +107,7 @@ panoramaSetting.prototype = {
     })
   },
   delete: function (p) {
-    if (!isEmpty(p.lon)) {
+    if (p.lon) {
       removeByValue(_lable, p);
     }
   },
@@ -115,7 +115,6 @@ panoramaSetting.prototype = {
     document.getElementById(this.def.container).innerHTML = '';
   }
 }
-
 
 function initSetContainer(c, url) {
   _setContainer = document.getElementById(c);
@@ -161,7 +160,7 @@ function initSetContainer(c, url) {
 
 
 function adptpImg(width, url) {
-  if (!isEmpty(width)) {
+  if (width) {
     _setContainer.style.width = width;
   }
   _setContainer.style.backgroundImage = '';

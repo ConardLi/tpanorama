@@ -75,11 +75,6 @@ function extend(o, n, override) {
   return o;
 }
 
-function isEmpty(str) {
-  if (str == undefined || str == null || str == "" || typeof str == 'undefined') {
-    return true;
-  }
-}
 
 function initContainer(c) {
   _container = document.getElementById(c);
