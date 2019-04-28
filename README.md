@@ -12,7 +12,11 @@ npm install
 npm run example
 ```
 
-浏览器访问：http://localhost:3000/
+```
+http://localhost:3000/
+
+http://localhost:3000/page1.html
+```
 
 # 使用
 
@@ -21,6 +25,11 @@ npm run example
 1.引用 [three.js](/origin/three.js)
 
 2.引用 [tpanorama.js](/origin/tpanorama.js)
+
+```js
+    <script src="/origin/three.js"></script>
+    <script src="/origin/tpanorama.js"></script>
+```
 
 参考[/examples/page1.html](/examples/page1.html)
 

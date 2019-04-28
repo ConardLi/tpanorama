@@ -1,6 +1,6 @@
 {
   "name": "tpanorama",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "全景标记，全景生成插件",
   "scripts": {
     "build": "babel src --out-dir lib",
