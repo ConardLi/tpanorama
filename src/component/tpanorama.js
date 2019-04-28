@@ -20,7 +20,6 @@ var _mouse = new Vector2();
 var _clickableObjects = [];
 var _sprites = [];
 var _lables = [];
-var _count1 = 1;
 
 var options = {
   container: 'panoramaConianer',//容器
@@ -29,7 +28,7 @@ var options = {
   widthSegments: 60,//水平切段数
   heightSegments: 40,//垂直切段数（值小粗糙速度快，值大精细速度慢）
   pRadius: 1000,//全景球的半径，推荐使用默认值
-  minFocalLength: 1,//镜头最a小拉近距离
+  minFocalLength: 1,//镜头最小拉近距离
   maxFocalLength: 100,//镜头最大拉近距离
   showlable: 'show' // show,click
 }
