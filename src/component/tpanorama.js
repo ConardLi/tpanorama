@@ -324,10 +324,8 @@ function worldPostion2Screen(world_vector, camera) {
 
 
 function runRender() {
-  _renderer.clear();
   _renderer.render(_scene, _camera);
-  _renderer.clearDepth();
   _renderer.render(_sceneOrtho, _cameraOrtho);
 }
-window.tpanorama = tpanorama;
+
 module.exports = tpanorama;

@@ -14,7 +14,7 @@
     </style>
 
     <script>
-        var opt, s;
+        var opt, s, img;
         window.onload = function () {
             //默认参数
             opt = {
@@ -54,10 +54,33 @@
             if (name == "p4") {
                 opt.lables = [{ lon: 48.96, lat: -20.16, text: '樱花' }]
             }
-            opt.imgUrl = 'img/' + name + '.png';
+            img = 'img/' + name + '.png';
+            opt.imgUrl = img;
             s.clean();
             s.config(opt);
             s.init();
+        }
+
+        function preview() {
+            document.getElementById('set').innerHTML = '';
+            var lables = s.getAllLables();
+            s.clean();
+            lables = lables.map((l) => ({
+                position: { lon: l.lon, lat: l.lat },
+                text: l.text
+            }))
+            opt = {
+                container: 'set',//容器
+                url: img || 'img/p3.png',
+                lables: lables,
+                widthSegments: 60,//水平切段数
+                heightSegments: 40,//垂直切段数（值小粗糙速度快，值大精细速度慢）
+                pRadius: 1000,//全景球的半径，推荐使用默认值
+                minFocalLength: 6,//镜头最小拉近距离
+                maxFocalLength: 100,//镜头最大拉近距离
+                showlable: 'show' // show,click
+            }
+            tp = new tpanorama(opt);
         }
 
 
@@ -71,6 +94,8 @@
     </br>
 
     <button onclick="getAll()">获取所有标记</button>
+    &nbsp;&nbsp;
+    <button onclick="preview()">预览</button>
     &nbsp;&nbsp;
     <button onclick="changeImg('p1')">图1</button>
     &nbsp;&nbsp;

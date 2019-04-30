@@ -112,6 +112,7 @@ panoramaSetting.prototype = {
     }
   },
   clean: function () {
+    document.onmousemove = () => { };
     document.getElementById(this.def.container).innerHTML = '';
   }
 }
