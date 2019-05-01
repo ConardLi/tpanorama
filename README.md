@@ -47,6 +47,8 @@ var { tpanorama,tpanoramaSetting} = require('tpanorama');
 
 # 1.全景展示
 
+![](./img/qj_15_qj.gif)
+
 ## 1.1 参数说明
 
 参数名称 | 类型 | 说明 
@@ -59,7 +61,8 @@ heightSegments |num| 垂直切段数（值小粗糙速度快，值大精细速�
 pRadius |num| 全景球的半径，影响视觉效果，推荐使用默认值 
 minFocalLength |num| 镜头最小拉近距离 
 maxFocalLength |num| 镜头最大拉近距离 
-showlable |'show'/'click'| 显示标记的方式，分为直接显示和点击显示
+spaire |'label'/'icon'| 显示标记的内容，文字或图标
+onClick|func|点击标记的回调函数
 
 ## 1.2 公用方法
 
@@ -97,7 +100,7 @@ clean | 清除全景对象
 
 修改某些参数
 
-```
+```js
 opt.showlable = 'click';
 opt.lables = [{position:{lon:180,lat:0},logoUrl:'img/logo.png',text:'点击了这个标记'}];
 opt.url = 'img/p1.png';
@@ -106,9 +109,9 @@ tp.config(opt);
 tp.init();
 ```
 
-![这里写图片描述](http://chuantu.biz/t6/42/1504930774x1929267553.png)
-
 # 2.添加全景标记工具
+
+![](./img/qj_17_qj.gif)
 
 在展示全景的时候，你或许会对标记的位置产生了疑问，如何确定标记的位置？
 
@@ -196,7 +199,6 @@ listen | 对全景对象监听事件
 ```
 
 
-![这里写图片描述](http://chuantu.biz/t6/42/1504930807x2890149554.png)
 
 ### 2.3.2 自定义事件
 
