@@ -14,9 +14,23 @@ window.onload = function () {
     pRadius: 1000,//全景球的半径，推荐使用默认值
     minFocalLength: 6,//镜头最a小拉近距离
     maxFocalLength: 100,//镜头最大拉近距离
-    showlable: 'click' // show,click
+    sprite: 'icon', // label,icon
+    onClick: onClick,
   }
   tp = new tpanorama(opt);
+}
+
+function onClick(name) {
+  console.log(name.object.name);
+  if (name.object.name === '大海') {
+    alert('进入下一张图')
+    opt.url = 'img/p2.png';
+    opt.lables = [];
+    tp.render(opt);
+  } else {
+    alert('点击了:' + name.object.name)
+  }
+
 }
 
 function changeImg(name) {
