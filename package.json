@@ -1,10 +1,10 @@
 {
   "name": "tpanorama",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "全景标记，全景生成插件",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib && babel originSrc --out-dir origin",
     "webpack": "webpack  --config webpack.config.js",
     "example": "npm run webpack && node ./server/www"
   },
