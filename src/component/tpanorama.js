@@ -30,7 +30,8 @@ var options = {
   pRadius: 1000,//全景球的半径，推荐使用默认值
   minFocalLength: 1,//镜头最小拉近距离
   maxFocalLength: 100,//镜头最大拉近距离
-  showlable: 'show' // show,click
+  sprite: 'label', // label,icon
+  onClick: () => { }
 }
 
 
@@ -50,7 +51,7 @@ tpanorama.prototype = {
     initRaycaster();
     makePanorama(this.def.pRadius, this.def.widthSegments, this.def.heightSegments, this.def.url);
     initRenderer();
-    initLable(this.def.lables, this.def.showlable);
+    initLable(this.def.lables, this.def.sprite);
     _container.addEventListener('mousedown', onDocumentMouseDown, false);
     _container.addEventListener('mousemove', onDocumentMouseMove, false);
     _container.addEventListener('mouseup', onDocumentMouseUp, false);
@@ -60,7 +61,7 @@ tpanorama.prototype = {
     _container.addEventListener('DOMMouseScroll', (e) => {
       onDocumentMouseWheel(e, this.def.minFocalLength, this.def.maxFocalLength);
     }, false);
-    _container.addEventListener('click', onDocumentMouseClick, false);
+    _container.addEventListener('click', onDocumentMouseClick.bind(this), false);
     global.addEventListener('resize', onWindowResize, false);
     animate();
   }
@@ -134,9 +135,7 @@ function onDocumentMouseClick(event) {
   _mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   _raycaster.setFromCamera(_mouse, _cameraOrtho);
   var intersects = _raycaster.intersectObjects(_clickableObjects);
-  intersects.forEach(function (element) {
-    alert("Intersection: " + element.object.name);
-  });
+  intersects.forEach(this.def.onClick);
 }
 
 function onDocumentMouseWheel(ev, minFocalLength, maxFocalLength) {
@@ -173,12 +172,12 @@ function onWindowResize() {
   _renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function initLable(lables, showlable) {
-  if (showlable == 'show') {
+function initLable(lables, sprite) {
+  if (sprite == 'label') {
     for (var i = 0; i < lables.length; i++) {
       _lables.push(createLableSprite(_sceneOrtho, lables[i].text, lables[i].position));
     }
-  } else if (showlable == 'click') {
+  } else if (sprite == 'icon') {
     for (var i = 0; i < lables.length; i++) {
       _sprites.push(createSprite(lables[i].position, lables[i].logoUrl, lables[i].text));
     }
@@ -191,11 +190,11 @@ function createLableSprite(scene, name, position) {
   var metrics = context1.measureText(name);
   var width = metrics.width * 1.5;
   context1.font = "10px 宋体";
-  context1.fillStyle = "rgba(0,0,0,0.95)"; // white border
+  context1.fillStyle = "rgba(0,0,0,0.95)";
   context1.fillRect(0, 0, width + 8, 20 + 8);
-  context1.fillStyle = "rgba(0,0,0,0.2)"; // black filler
+  context1.fillStyle = "rgba(0,0,0,0.2)";
   context1.fillRect(2, 2, width + 4, 20 + 4);
-  context1.fillStyle = "rgba(255,255,255,0.95)"; // text color
+  context1.fillStyle = "rgba(255,255,255,0.95)";
   context1.fillText(name, 4, 20);
   var texture1 = new Texture(canvas1);
   texture1.needsUpdate = true;
@@ -213,6 +212,7 @@ function createLableSprite(scene, name, position) {
     sprite: sprite1
   };
   _sceneOrtho.add(lable.sprite);
+  _clickableObjects.push(lable.sprite);
   return lable;
 }
 
